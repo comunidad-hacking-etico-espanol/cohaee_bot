@@ -11,10 +11,12 @@ Documentación:
 Notas:
 
 .env 
+
 TELEGRAM_TOKEN=
 ADMIN_LIST=MisterWh1t3,jarriagada
 
 gdrive.json
+
 {
   "type": "service_account",
   "project_id": "",
