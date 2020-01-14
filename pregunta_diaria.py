@@ -8,7 +8,7 @@ class PreguntaDiaria():
 
     @staticmethod
     def __norm(row):
-        return {'id': row[0], 'fecha': row[1], 'pregunta': row[3], 'usuario': row[4], 'estado': row[5]}
+        return {'id': row[0], 'fecha': row[1], 'pregunta': row[2], 'usuario': row[3], 'estado': row[4]}
 
     def __get_preguntas(self):
         preguntas = self.google_sheet.get_data()
