@@ -1,13 +1,19 @@
 from telegram.ext import Updater, CommandHandler
 from settings import *
+from funciones import get_time
+from pregunta_diaria import PreguntaDiaria
 
+pregunta_diaria = PreguntaDiaria()
 
 def cmd_handler(update, context):
     username = update.effective_user.username
     chat_id = update.effective_message.chat.id
     message_id = update.effective_message.message_id
 
-    logger_console(logger, update.effective_user, {'chat_id': chat_id, 'update': update.message.text})
+    user_id = update.effective_user.id
+    user_full_name = update.effective_user.full_name
+
+    logger.info("{} | {} | {} | {}".format(user_id, username, user_full_name, str(update.message.text)))
 
     if username in ADMIN_LIST:
         if len(update.message.text.split()) >= 2:
@@ -17,12 +23,14 @@ def cmd_handler(update, context):
             reply = False
             if comando == 'hora':
                 msg = get_time(F_FECHAHORA) + " (UTC +1)"
+            elif comando == 'diaria':
+                msg = pregunta_diaria.get_pregunta_diaria()
 
             msg = msg
             if reply:
                 update.message.reply_text(msg)
             else:
-                context.bot.send_message(chat_id=chat_id, text=msg)
+                context.bot.send_message(chat_id=chat_id, text=msg, parse_mode='MarkdownV2')
                 context.bot.deleteMessage(chat_id=chat_id, message_id=message_id)
 
 

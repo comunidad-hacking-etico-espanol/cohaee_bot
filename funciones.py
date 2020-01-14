@@ -12,7 +12,3 @@ def get_time(formato):
             return
 
     return datetime.now(TZ()).strftime(formato)
-
-
-def logger_console(logger, user, extra):
-    logger.info("{} | {} | {} | {}".format(user.id, user.username, user.full_name, str(extra) ))

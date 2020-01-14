@@ -1,3 +1,4 @@
+# TODO: D E P R E C A D O - no funcionará - migrar
 # https://dev.to/petercour/get-http-response-codes-with-python-181h
 from threading import Thread
 import urllib.request
@@ -27,8 +28,6 @@ class GetUrlThread(Thread):
 
 
 class Repositorio:
-    from settings import GOOGLE_CLIENT
-
     #COLUMNAS = ['CATEGORÍA', 'DESCRIPCIÓN', 'LINK', 'CONTRASEÑA', 'F. INC.', 'F. REV.']
     PRIMERA_FILA = 2
 
