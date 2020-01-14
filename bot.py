@@ -20,17 +20,19 @@ def cmd_handler(update, context):
             comando = update.message.text.split()[1]
 
             msg = "Comando '"+comando+"' desconocido."
+            parse_mode = None
             reply = False
             if comando == 'hora':
                 msg = get_time(F_FECHAHORA) + " (UTC +1)"
             elif comando == 'diaria':
                 msg = pregunta_diaria.get_pregunta_diaria()
+                parse_mode = 'MarkdownV2'
 
             msg = msg
             if reply:
                 update.message.reply_text(msg)
             else:
-                context.bot.send_message(chat_id=chat_id, text=msg, parse_mode='MarkdownV2')
+                context.bot.send_message(chat_id=chat_id, text=msg, parse_mode=parse_mode)
                 context.bot.deleteMessage(chat_id=chat_id, message_id=message_id)
 
 
