@@ -2,7 +2,6 @@ python-dotenv
 gspread
 oauth2client
 python-telegram-bot
-python3-mega
 urllib3
 requests
 URLObject
