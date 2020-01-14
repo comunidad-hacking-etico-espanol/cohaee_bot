@@ -11,7 +11,7 @@
 BoT@CoHaEE:~$ git clone https://github.com/comunidad-hacking-etico-espanol/cohaee_bot.git
 BoT@CoHaEE:~$ cd cohaee_bot
 BoT@CoHaEE:~$ git checkout develop
-BoT@CoHaEE:~$ cp .env_example .env
+BoT@CoHaEE:~$ touch .env
 BoT@CoHaEE:~$ vim .env
 ```
 ```vim
@@ -22,8 +22,8 @@ TELEGRAM_TOKEN=
 ADMIN_LIST=MisterWh1t3,jarriagada
 ```
 ```console
-BoT@CoHaEE:~$ cp gdrive.json_example gdrive.json
-BoT@CoHaEE:~$ vim .env
+BoT@CoHaEE:~$ touch gdrive.json
+BoT@CoHaEE:~$ vim gdrive.json
 ```
 ```vim
 {
