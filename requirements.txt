@@ -1,8 +1,6 @@
 python-dotenv
-gspread
-oauth2client
 python-telegram-bot
 urllib3
 requests
 URLObject
-pycrypto
+firebase-admin

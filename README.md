@@ -6,6 +6,7 @@
 
 ### Documentación:
 - https://python-telegram-bot.readthedocs.io/en/stable/
+- https://firebase.google.com/docs/firestore/quickstart
 
 ```console
 BoT@CoHaEE:~$ git clone https://github.com/comunidad-hacking-etico-espanol/cohaee_bot.git
@@ -20,10 +21,11 @@ TELEGRAM_TOKEN=
 
 # Config
 ADMIN_LIST=MisterWh1t3,jarriagada
+CHAT_LIST=-1001475695377
 ```
 ```console
-BoT@CoHaEE:~$ touch gdrive.json
-BoT@CoHaEE:~$ vim gdrive.json
+BoT@CoHaEE:~$ touch firebase.json
+BoT@CoHaEE:~$ vim firebase.json
 ```
 ```vim
 {

@@ -1,9 +1,15 @@
 from telegram.ext import Updater, CommandHandler
-from settings import *
-from funciones import get_time
-from pregunta_diaria import PreguntaDiaria
+from include.settings import *
+from include.funciones import get_time
+from include.pregunta_diaria import PreguntaDiaria
+from include.chats import Chats
+from models.chat import Chat
+from include.firebase import Firebase
 
-pregunta_diaria = PreguntaDiaria()
+firebase = Firebase()
+pregunta_diaria = PreguntaDiaria(firebase)
+chats = Chats(firebase)
+
 
 def cmd_handler(update, context):
     username = update.effective_user.username
@@ -12,6 +18,19 @@ def cmd_handler(update, context):
 
     user_id = update.effective_user.id
     user_full_name = update.effective_user.full_name
+
+    chat = chats.get_id(chat_id=update.effective_message.chat.id)
+    if chat is None:
+        chat = Chat(
+            id=update.effective_message.chat.id,
+            type=update.effective_message.chat.type)
+        if update.effective_message.chat.username is not None:
+            chat.username = update.effective_message.chat.username
+        if update.effective_message.chat.title is not None:
+            chat.title = update.effective_message.chat.title;
+        chats.agregar(chat)
+        logger.info("Chats.agregar({})".format(chat))
+    chat = chats.get_id(chat_id=update.effective_message.chat.id)
 
     logger.info("{} | {} | {} | {}".format(user_id, username, user_full_name, str(update.message.text)))
 
@@ -27,6 +46,11 @@ def cmd_handler(update, context):
             elif comando == 'diaria':
                 msg = pregunta_diaria.get_pregunta_diaria()
                 parse_mode = 'MarkdownV2'
+            elif comando == 'init':
+                if chat.oficial is False:
+                    chat.oficial = True
+                    chats.actualizar(chat)
+                msg = "Este chat ahora es Oficial."
 
             msg = msg
             if reply:

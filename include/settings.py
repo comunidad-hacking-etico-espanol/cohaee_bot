@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 load_dotenv(verbose=True)
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 ADMIN_LIST = os.getenv("ADMIN_LIST").split(",")
+CHAT_LIST = os.getenv("CHAT_LIST").split(",")
 
 # const
 F_HORA = '%H:%M:%S'
