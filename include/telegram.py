@@ -4,11 +4,11 @@ from include.funciones import get_time
 from include.pregunta_diaria import PreguntaDiaria
 from include.chats import Chats
 from models.chat import Chat
-from include.firebase import Firebase
+from include.firebase import Firestore
 
-firebase = Firebase()
-pregunta_diaria = PreguntaDiaria(firebase)
-chats = Chats(firebase)
+firestore = Firestore()
+pregunta_diaria = PreguntaDiaria(firestore)
+chats = Chats(firestore)
 
 
 def cmd_handler(update, context):
