@@ -1,4 +1,4 @@
-class Firebase:
+class Firestore:
     collection = None
     model = None
 
@@ -84,3 +84,15 @@ class Firebase:
         finally:
             if document is not None:
                 document.delete()
+
+
+class Database:
+    def __init__(self, firestore, collection, model):
+        self.__firestore = firestore
+        self.__collection = collection
+        self.__model = model
+
+    def _db(self):
+        self.__firestore.collection = self.__collection
+        self.__firestore.model = self.__model
+        return self.__firestore
