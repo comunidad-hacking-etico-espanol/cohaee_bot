@@ -53,11 +53,11 @@ def cmd_handler(update, context):
                 msg = "Este chat ahora es Oficial."
 
             msg = msg
-            if reply:
+            if reply and msg is not None:
                 update.message.reply_text(msg)
-            else:
+            elif msg is not None:
                 context.bot.send_message(chat_id=chat_id, text=msg, parse_mode=parse_mode)
-                context.bot.deleteMessage(chat_id=chat_id, message_id=message_id)
+            context.bot.deleteMessage(chat_id=chat_id, message_id=message_id)
 
 
 def error_handler(update, context):

@@ -23,3 +23,5 @@ class PreguntaDiaria(Database):
             return self.__get_pregunta_formateada(lst_pendientes.pop(0))
         elif len(lst_pendientes) > 1:
             return "Error: pendientes > 1 - @jarriagada"
+
+        return None
